@@ -1,26 +1,44 @@
+
 use strict;
 use warnings;
-use Module::Build;
 
-my $builder = Module::Build->new(
-    module_name         => 'MooseX::Role::AttributeOverride',
-    license             => 'perl',
-    dist_author         => 'Edward Allen <ealleniii_at_cpan_dot_org>',
-    dist_version_from   => 'lib/MooseX/Role/AttributeOverride.pm',
-    requires => {
-        'version'    => 0.77,
-        'Moose'      => 1.9900,
-    },
-    build_requires => {
-        'Test::More' => 0,
-        'TAP::Harness' => 0,
-    },
-    configure_requires => { 'Module::Build' => 0.38 },
-    add_to_cleanup      => [ 'MooseX-Role-AttributeOverride-*' ],
-    use_tap_harness => 1,
-    create_license => 1,
-    #release_status => 'unstable',
-    create_makefile_pl => 'traditional',
+use Module::Build 0.3601;
+
+
+my %module_build_args = (
+  'build_requires' => {
+    'English' => '0',
+    'File::Find' => '0',
+    'File::Temp' => '0',
+    'Module::Build' => '0.3601',
+    'Moose::Util' => '0',
+    'Test::More' => '0.88'
+  },
+  'configure_requires' => {
+    'Module::Build' => '0.3601'
+  },
+  'dist_abstract' => 'Allow roles to modify attributes',
+  'dist_author' => [
+    'Edward Allen <ealleniii_at_cpan_dot_org>'
+  ],
+  'dist_name' => 'MooseX-Role-AttributeOverride',
+  'dist_version' => '0.0.5',
+  'license' => 'perl',
+  'module_name' => 'MooseX::Role::AttributeOverride',
+  'recommends' => {},
+  'recursive_test_files' => 1,
+  'requires' => {
+    'Moose' => '0',
+    'Moose::Exporter' => '0',
+    'Moose::Role' => '1.9900',
+    'Moose::Util::MetaRole' => '0',
+    'perl' => '5.008',
+    'utf8' => '0'
+  },
+  'script_files' => []
 );
 
-$builder->create_build_script();
+
+my $build = Module::Build->new(%module_build_args);
+
+$build->create_build_script;

@@ -1,7 +1,25 @@
+#
+# This file is part of MooseX-Role-AttributeOverride
+#
+# This software is copyright (c) 2011 by Edward J. Allen III.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
+use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role;
+BEGIN {
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.5';
+}
+BEGIN {
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::AUTHORITY = 'cpan:EALLENIII';
+}
+# ABSTRACT: Support Role for L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
+use 5.008;
+use utf8;
+
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.0.3');
 use Moose::Role;
 
 has 'attribute_modifiers' => (
@@ -27,6 +45,7 @@ sub apply_modifiers_to_class {
 sub apply_modifier_to_attribute {
     my ( $role, $class, $attr, $opts ) = @_;
     my $attr_obj = $class->find_attribute_by_name($attr);
+    ## no critic (ProhibitAccessOfPrivateData);
     if ($attr_obj) {
         if ( exists $opts->{override_ignore_missing} ) {
             delete $opts->{override_ignore_missing};
@@ -43,13 +62,14 @@ sub apply_modifier_to_attribute {
         }
         return;
     }
+    ## use critic;
     return $attr_obj;
 }
 
 sub add_modifiers_from_role {
-    my ( $role1, $role2 ) = @_;
-    $role1->add_attribute_modifier( @{ $role2->attribute_modifiers } );
-    return $role1;
+    my ( $role_a, $role_b ) = @_;
+    $role_a->add_attribute_modifier( @{ $role_b->attribute_modifiers } );
+    return $role_a;
 }
 
 sub composition_class_roles {
@@ -58,17 +78,21 @@ sub composition_class_roles {
 
 no Moose::Role;
 1; # Magic true value required at end of module
-__END__
+
+
+=pod
+
+=for :stopwords Edward Allen <ealleniii_at_cpan_dot_org> J. III
+
+=encoding utf-8
 
 =head1 NAME
 
-MooseX::Role::AttributeOverride::Meta::Trait::Role - Support Role for
-L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
+MooseX::Role::AttributeOverride::Meta::Trait::Role - Support Role for L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
 
 =head1 VERSION
 
-This document describes MooseX::Role::AttributeOverride version 0.0.3
-
+  This document describes v0.0.5 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 06, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 
@@ -76,29 +100,21 @@ See L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
 
 =head1 DESCRIPTION
 
-This module is part of L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
+Apply this role to L<Moose::Meta::Role|Moose::Meta::Role>.
 
-=head1 INTERFACE 
+=head1 METHODS
 
-See L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
+=head2 composition_class_roles
 
-=head1 INTERNAL METHODS
+=head2 add_modifiers_from_role
 
-=over
+=head2 apply_modifiers_to_class
 
-=item composition_class_roles
+=head2 apply_modifier_to_attribute
 
-=item add_modifiers_from_role
+=head2 attribute_modifiers
 
-=item apply_modifiers_to_class
-
-=item apply_modifier_to_attribute
-
-=item attribute_modifiers
-
-=item add_attribute_modifier
-
-=back
+=head2 add_attribute_modifier
 
 =head1 DIAGNOSTICS
 
@@ -116,38 +132,54 @@ See L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
 
 See L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
 
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
+
+=back
+
 =head1 AUTHOR
 
-Edward Allen  C<< <ealleniii_at_cpan_dot_org> >>
+Edward Allen <ealleniii_at_cpan_dot_org>
 
+=head1 COPYRIGHT AND LICENSE
 
-=head1 LICENCE AND COPYRIGHT
+This software is copyright (c) 2011 by Edward J. Allen III.
 
-Copyright (c) 2011, Edward Allen C<< <ealleniii_at_cpan_dot_org> >>. All rights reserved.
-
-This module is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself. See L<perlartistic|perlartistic>.
-
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =head1 DISCLAIMER OF WARRANTY
 
 BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
-FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
-OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
-PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
-EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
-ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
-YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
-NECESSARY SERVICING, REPAIR, OR CORRECTION.
+FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT
+WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER
+PARTIES PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+SOFTWARE IS WITH YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME
+THE COST OF ALL NECESSARY SERVICING, REPAIR, OR CORRECTION.
 
 IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
 WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE
-LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL,
-OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
-THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE LIABLE
+TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
 RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
 FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
-SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
-SUCH DAMAGES.
+SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES.
+
+=cut
+
+
+__END__
+

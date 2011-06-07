@@ -2,24 +2,34 @@ NAME
     MooseX::Role::AttributeOverride - Allow roles to modify attributes
 
 VERSION
-    This document describes MooseX::Role::AttributeOverride version 0.0.3
+      This document describes v0.0.5 of MooseX::Role::AttributeOverride - released June 06, 2011 as part of MooseX-Role-AttributeOverride.
 
-INSTALLATION
+SYNOPSIS
+        package MyApp::Role;
+        use Moose::Role;
+        use MooseX::Role::AttributeOverride;
 
-To install this module, run the following commands:
+        has_plus 'fun' => (
+            default => 'yep',
+        );
 
-	perl Makefile.PL
-	make
-	make test
-	make install
 
-Alternatively, to install with Module::Build, you can use the following commands:
+        package MyApp;
+        use Moose 1.9900;
 
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
+        has 'fun' => (
+            is => 'rw',
+            isa => 'Str'
+        );
 
+        with qw(MyApp::Role);
+
+        package main;
+        use feature 'say';
+
+        say "Are you having fun? " . $test->fun;
+
+        # prints 'Are you having fun? yep'
 
 DESCRIPTION
     Moose doesn't allow roles to override attributes using the has '+attr'
@@ -33,12 +43,35 @@ DESCRIPTION
 INTERFACE
     has_plus
         This has exactly the same syntax as the Moose has command, except
-        you should not use a plus.
+        you should not use a plus to indicate you are overriding an
+        attribute.
 
-        One additional option is available, 'override_ignore_missing'.
-        Setting this to a true value will allow your role to have
-        modifications to attributes that may not exist in the class it is
-        applied to. The default is to die in these cases.
+    has_plus options
+
+        override_ignore_missing
+            Setting this to a true value will allow your role to have
+            modifications to attributes that may not exist in the class it
+            is applied to. The default is to die in these cases.
+
+            For example:
+
+                package MyApp::Role;
+                use Moose::Role;
+                use MooseX::Role::AttributeOverride;
+
+                has_plus 'fun' => (
+                    default => 'yep',
+                    override_ignore_missing => 1,
+                );
+
+                package MyApp;
+                use Moose;
+
+                with qw(MyApp::Role);
+                # I'm not dead yet.
+
+            The above would not die, even though the MyApp package has no
+            attribute named 'fun.'
 
 DIAGNOSTICS
     Can't find attribute $attr required by $role
@@ -61,7 +94,7 @@ DIAGNOSTICS
             # Good
             has 'children', trait => ['good']
 
-            # Bad.  Will die
+            # Bad. Will die.
             has '+children', trait => ['naughty']
 
 DEPENDENCIES
@@ -79,7 +112,7 @@ BUGS AND LIMITATIONS
     *   Order matters! If two roles modify the same attribute in the same
         way, the second one applied will be the one that is used. This
         behavior, however, relies on Moose keeping track of order, which it
-        generally does a good job of, but no gurantees.
+        generally does a good job of, but no guarantees.
 
     *   Currently, the value of the attribute is clobbered when the role is
         applied. This may change in the future.
@@ -87,27 +120,90 @@ BUGS AND LIMITATIONS
     *   This works the same as '+has'. This means that you can't override
         accessor methods. This is a very sensible Moose limitation.
 
-    I am relativly new to Moose. I had an itch, and wrote this Module to
+    I am relatively new to Moose. I had an itch, and wrote this Module to
     scratch it. Please let me know how to make this module better.
 
     For bugs, test cases are great!
 
-    Please report any bugs or feature requests to
-    "bug-moosex-role-attributeoveride@rt.cpan.org", or through the web
-    interface at <http://rt.cpan.org>.
-
 SEE ALSO
-    Moose, Moose::Manual::Attributes
+    Please see those modules/websites for more information related to this
+    module.
+
+    *   Moose
+
+    *   Moose::Manual::Attributes
+
+SUPPORT
+  Websites
+    The following websites have more information about this module, and may
+    be of help to you. As always, in addition to those websites please use
+    your favorite search engine to discover more resources.
+
+    *   Search CPAN
+
+        The default CPAN search engine, useful to view POD in HTML format.
+
+        <http://search.cpan.org/dist/MooseX-Role-AttributeOverride>
+
+    *   CPAN Testers Dependencies
+
+        The CPAN Testers Dependencies is a website that shows a chart of the
+        test results of all dependencies for a distribution.
+
+        <http://deps.cpantesters.org/?module=MooseX::Role::AttributeOverride
+        >
+
+    *   CPANTS
+
+        The CPANTS is a website that analyzes the Kwalitee ( code metrics )
+        of a distribution.
+
+        <http://cpants.perl.org/dist/overview/MooseX-Role-AttributeOverride>
+
+    *   CPAN Testers
+
+        The CPAN Testers is a network of smokers who run automated tests on
+        uploaded CPAN distributions.
+
+        <http://www.cpantesters.org/distro/M/MooseX-Role-AttributeOverride>
+
+    *   CPAN Testers Matrix
+
+        The CPAN Testers Matrix is a website that provides a visual way to
+        determine what Perls/platforms PASSed for a distribution.
+
+        <http://matrix.cpantesters.org/?dist=MooseX-Role-AttributeOverride>
+
+  Email
+    You can email the author of this module at "EALLENIII at cpan.org"
+    asking for help with any problems you have.
+
+  Bugs / Feature Requests
+    Please report any bugs or feature requests by email to
+    "bug-moosex-role-attributeoverride at rt.cpan.org", or through the web
+    interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-Role-AttributeOve
+    rride>. You will be automatically notified of any progress on the
+    request by the system.
+
+  Source Code
+    The code is open to the world, and available for you to hack on. Please
+    feel free to browse it and play with it, or whatever. If you want to
+    contribute patches, please send me a diff or prod me to pull from your
+    repository :)
+
+    <http://github.com/riemann42/MooseX-Role-AttributeOverride>
+
+      git clone git://github.com/riemann42/MooseX-Role-AttributeOverride.git
 
 AUTHOR
-    Edward Allen "<ealleniii_at_cpan_dot_org>"
+    Edward Allen <ealleniii_at_cpan_dot_org>
 
-LICENCE AND COPYRIGHT
-    Copyright (c) 2011, Edward Allen "<ealleniii_at_cpan_dot_org>". All
-    rights reserved.
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by Edward J. Allen III.
 
-    This module is free software; you can redistribute it and/or modify it
-    under the same terms as Perl itself. See perlartistic.
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
 DISCLAIMER OF WARRANTY
     BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY

@@ -1,5 +1,41 @@
-Revision history for MooseX-Role-AttributeOverride
+==============================
+9999-99-99 99:99:99 +0000 HEAD
+==============================
 
-0.0.3  Sat Jun  4 13:48:11 2011
-       Initial release.
+  commit ca218744a83e5351e6ab7d6bcde7cacfad00d52c
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Mon Jun 6 21:17:43 2011 -0700
+  
+    Configured to use git log for changes as I am lazy 
 
+================================
+2011-06-06 21:07:32 -0700 v0.0.4
+================================
+
+  commit 4c46432a85c8c641221f7cade20277ccdacd7841
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Mon Jun 6 21:07:32 2011 -0700
+  
+    New CPAN release of MooseX-Role-AttributeOverride - v0.0.4
+
+  commit c726b7e3d4791118ec52b08591da2e5132b9c0d2
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Mon Jun 6 20:59:32 2011 -0700
+  
+    Added some author tests and revised POD generation
+
+  commit b46fbd47997a55eaee622cfbcc04ac31eb8fbb97
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Mon Jun 6 20:18:29 2011 -0700
+  
+    Perl Critic Fixes for silly little things
+
+  commit 803ed79263a3e99d5f1fd7abb354422f6ec9c890
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Sun Jun 5 23:17:00 2011 -0700
+  
+    Switched to using Dist::Zilla 
+
+===================================
+End of changes in the last 365 days
+===================================
