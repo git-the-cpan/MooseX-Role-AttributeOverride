@@ -22,7 +22,7 @@ my %module_build_args = (
     'Edward Allen <ealleniii_at_cpan_dot_org>'
   ],
   'dist_name' => 'MooseX-Role-AttributeOverride',
-  'dist_version' => '0.0.5',
+  'dist_version' => '0.0.6',
   'license' => 'perl',
   'module_name' => 'MooseX::Role::AttributeOverride',
   'recommends' => {},

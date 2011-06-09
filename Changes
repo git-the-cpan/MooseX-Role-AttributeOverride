@@ -2,6 +2,40 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 9b847a5dd655e99ae61891070efa5393381edfd8
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Thu Jun 9 11:13:33 2011 -0700
+  
+    Fixed some silly critic issues on stolen code
+
+  commit 89dee4ede69e17d966ee0755c7ba73bd01bf9c17
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Thu Jun 9 11:02:50 2011 -0700
+  
+    Changes to devel.ini
+
+  commit 2b7442fb019cca1c5a94f35bca7bf270eebd0cb5
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Thu Jun 9 11:01:32 2011 -0700
+  
+    Replaced clone_and_inherit with my own hack
+
+  commit d23d0f55f4639116666631e2d788108b5bcbf46d
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Tue Jun 7 22:13:29 2011 -0700
+  
+    Added trait test. Which fails. 
+
+================================
+2011-06-06 21:30:01 -0700 v0.0.5
+================================
+
+  commit 7bd514571a5834717a66bdf092c2d20e693e8e96
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Mon Jun 6 21:30:01 2011 -0700
+  
+    Minor changes to dist.ini
+
   commit ca218744a83e5351e6ab7d6bcde7cacfad00d52c
   Author: Edward Allen <ealleniii@cpan.org>
   Date:   Mon Jun 6 21:17:43 2011 -0700

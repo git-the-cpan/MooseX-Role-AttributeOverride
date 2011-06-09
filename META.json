@@ -19,7 +19,6 @@
          "t",
          "xt",
          "examples",
-         "share",
          "eg"
       ]
    },
@@ -57,23 +56,23 @@
    "provides" : {
       "MooseX::Role::AttributeOverride" : {
          "file" : "lib/MooseX/Role/AttributeOverride.pm",
-         "version" : "v0.0.5"
+         "version" : "v0.0.6"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role.pm",
-         "version" : "v0.0.5"
+         "version" : "v0.0.6"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToClass.pm",
-         "version" : "v0.0.5"
+         "version" : "v0.0.6"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToRole" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToRole.pm",
-         "version" : "v0.0.5"
+         "version" : "v0.0.6"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/Composite.pm",
-         "version" : "v0.0.5"
+         "version" : "v0.0.6"
       }
    },
    "release_status" : "stable",
@@ -92,17 +91,17 @@
          "web" : "http://github.com/riemann42/MooseX-Role-AttributeOverride"
       }
    },
-   "version" : "0.0.5",
+   "version" : "0.0.6",
    "x_BuiltWith" : {
       "modules" : {
          "English" : "1.04",
          "File::Temp" : "0.22",
          "Module::Build" : "0.38",
-         "Moose" : "2.0007",
-         "Moose::Exporter" : "2.0007",
-         "Moose::Role" : "2.0007",
-         "Moose::Util" : "2.0007",
-         "Moose::Util::MetaRole" : "2.0007",
+         "Moose" : "2.0101",
+         "Moose::Exporter" : "2.0101",
+         "Moose::Role" : "2.0101",
+         "Moose::Util" : "2.0101",
+         "Moose::Util::MetaRole" : "2.0101",
          "Test::More" : "0.98",
          "perl" : "NA(skipped: perl)",
          "utf8" : "1.08"
@@ -186,11 +185,6 @@
             "version" : "4.200007"
          },
          {
-            "class" : "Dist::Zilla::Plugin::Git::NextVersion",
-            "name" : "Git::NextVersion",
-            "version" : "1.111460"
-         },
-         {
             "class" : "Dist::Zilla::Plugin::AutoPrereqs",
             "name" : "AutoPrereqs",
             "version" : "4.200007"
@@ -214,6 +208,11 @@
             "class" : "Dist::Zilla::Plugin::PodWeaver",
             "name" : "PodWeaver",
             "version" : "3.101641"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Git::NextVersion",
+            "name" : "Git::NextVersion",
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::NextRelease",
@@ -266,11 +265,6 @@
             "version" : "4.200007"
          },
          {
-            "class" : "Dist::Zilla::Plugin::ShareDir",
-            "name" : "ShareDir",
-            "version" : "4.200007"
-         },
-         {
             "class" : "Dist::Zilla::Plugin::MinimumPerl",
             "name" : "MinimumPerl",
             "version" : "1.003"
@@ -295,7 +289,7 @@
             "config" : {
                "Dist::Zilla::Plugin::MetaData::BuiltWith" : {
                   "_stash_key" : "x_BuiltWith",
-                  "show_uname" : 0
+                  "show_uname" : "0"
                }
             },
             "name" : "MetaData::BuiltWith",
@@ -322,6 +316,11 @@
             "version" : "1.12060501"
          },
          {
+            "class" : "Dist::Zilla::Plugin::MetaJSON",
+            "name" : "MetaJSON",
+            "version" : "4.200007"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::ModuleBuild",
             "name" : "ModuleBuild",
             "version" : "4.200007"
@@ -330,11 +329,6 @@
             "class" : "Dist::Zilla::Plugin::DualBuilders",
             "name" : "DualBuilders",
             "version" : "1.001"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::MetaJSON",
-            "name" : "MetaJSON",
-            "version" : "4.200007"
          },
          {
             "class" : "Dist::Zilla::Plugin::ReadmeFromPod",
@@ -347,24 +341,19 @@
             "version" : "1.101461"
          },
          {
-            "class" : "Dist::Zilla::Plugin::Git::Commit",
-            "name" : "Git::Commit",
-            "version" : "1.111460"
+            "class" : "Dist::Zilla::Plugin::Git::Check",
+            "name" : "Git::Check",
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "Git::Tag",
-            "version" : "1.111460"
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::ChangelogFromGit",
             "name" : "ChangelogFromGit",
             "version" : "0.002"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::Git::Check",
-            "name" : "Git::Check",
-            "version" : "1.111460"
          },
          {
             "class" : "Dist::Zilla::Plugin::TestRelease",
@@ -389,7 +378,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "Git::Push",
-            "version" : "1.111460"
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
@@ -425,7 +414,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : 0
+            "is_trial" : "0"
          },
          "version" : "4.200007"
       }

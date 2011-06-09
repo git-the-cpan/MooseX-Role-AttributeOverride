@@ -2,7 +2,7 @@ NAME
     MooseX::Role::AttributeOverride - Allow roles to modify attributes
 
 VERSION
-      This document describes v0.0.5 of MooseX::Role::AttributeOverride - released June 06, 2011 as part of MooseX-Role-AttributeOverride.
+      This document describes v0.0.6 of MooseX::Role::AttributeOverride - released June 09, 2011 as part of MooseX-Role-AttributeOverride.
 
 SYNOPSIS
         package MyApp::Role;
@@ -119,6 +119,12 @@ BUGS AND LIMITATIONS
 
     *   This works the same as '+has'. This means that you can't override
         accessor methods. This is a very sensible Moose limitation.
+
+    *   After having an issue with Moose, clone_and_inherit_options, and
+        traits that use _process_options, I reimplemented
+        clone_and_inherit_optiosn in a way that fixes it. Sort of. A side
+        effect of this is that has_plus will not allow you to override the
+        lazy option, without a default or builder option.
 
     I am relatively new to Moose. I had an itch, and wrote this Module to
     scratch it. Please let me know how to make this module better.

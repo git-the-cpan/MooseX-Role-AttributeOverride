@@ -24,24 +24,23 @@ no_index:
     - t
     - xt
     - examples
-    - share
     - eg
 provides:
   MooseX::Role::AttributeOverride:
     file: lib/MooseX/Role/AttributeOverride.pm
-    version: v0.0.5
+    version: v0.0.6
   MooseX::Role::AttributeOverride::Meta::Trait::Role:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role.pm
-    version: v0.0.5
+    version: v0.0.6
   MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToClass.pm
-    version: v0.0.5
+    version: v0.0.6
   MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToRole:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToRole.pm
-    version: v0.0.5
+    version: v0.0.6
   MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/Composite.pm
-    version: v0.0.5
+    version: v0.0.6
 requires:
   Moose: 0
   Moose::Exporter: 0
@@ -54,17 +53,17 @@ resources:
   homepage: http://search.cpan.org/dist/MooseX-Role-AttributeOverride/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/riemann42/MooseX-Role-AttributeOverride.git
-version: 0.0.5
+version: 0.0.6
 x_BuiltWith:
   modules:
     English: 1.04
     File::Temp: 0.22
     Module::Build: 0.38
-    Moose: 2.0007
-    Moose::Exporter: 2.0007
-    Moose::Role: 2.0007
-    Moose::Util: 2.0007
-    Moose::Util::MetaRole: 2.0007
+    Moose: 2.0101
+    Moose::Exporter: 2.0101
+    Moose::Role: 2.0101
+    Moose::Util: 2.0101
+    Moose::Util::MetaRole: 2.0101
     Test::More: 0.98
     perl: 'NA(skipped: perl)'
     utf8: 1.08
@@ -131,10 +130,6 @@ x_Dist_Zilla:
       name: '@Filter/ConfirmRelease'
       version: 4.200007
     -
-      class: Dist::Zilla::Plugin::Git::NextVersion
-      name: Git::NextVersion
-      version: 1.111460
-    -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: AutoPrereqs
       version: 4.200007
@@ -154,6 +149,10 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::PodWeaver
       name: PodWeaver
       version: 3.101641
+    -
+      class: Dist::Zilla::Plugin::Git::NextVersion
+      name: Git::NextVersion
+      version: 1.111590
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: NextRelease
@@ -193,10 +192,6 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: ExecDir
-      version: 4.200007
-    -
-      class: Dist::Zilla::Plugin::ShareDir
-      name: ShareDir
       version: 4.200007
     -
       class: Dist::Zilla::Plugin::MinimumPerl
@@ -239,6 +234,10 @@ x_Dist_Zilla:
       name: MetaProvides::Package
       version: 1.12060501
     -
+      class: Dist::Zilla::Plugin::MetaJSON
+      name: MetaJSON
+      version: 4.200007
+    -
       class: Dist::Zilla::Plugin::ModuleBuild
       name: ModuleBuild
       version: 4.200007
@@ -246,10 +245,6 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::DualBuilders
       name: DualBuilders
       version: 1.001
-    -
-      class: Dist::Zilla::Plugin::MetaJSON
-      name: MetaJSON
-      version: 4.200007
     -
       class: Dist::Zilla::Plugin::ReadmeFromPod
       name: ReadmeFromPod
@@ -259,21 +254,17 @@ x_Dist_Zilla:
       name: InstallGuide
       version: 1.101461
     -
-      class: Dist::Zilla::Plugin::Git::Commit
-      name: Git::Commit
-      version: 1.111460
+      class: Dist::Zilla::Plugin::Git::Check
+      name: Git::Check
+      version: 1.111590
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: Git::Tag
-      version: 1.111460
+      version: 1.111590
     -
       class: Dist::Zilla::Plugin::ChangelogFromGit
       name: ChangelogFromGit
       version: 0.002
-    -
-      class: Dist::Zilla::Plugin::Git::Check
-      name: Git::Check
-      version: 1.111460
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: TestRelease
@@ -293,7 +284,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: Git::Push
-      version: 1.111460
+      version: 1.111590
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'

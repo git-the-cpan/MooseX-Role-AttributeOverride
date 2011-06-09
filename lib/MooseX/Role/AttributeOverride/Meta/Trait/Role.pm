@@ -9,12 +9,15 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role;
 BEGIN {
-  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.5';
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.6';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::Meta::Trait::Role::AUTHORITY = 'cpan:EALLENIII';
 }
 # ABSTRACT: Support Role for L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
+
+# PODNAME: MooseX::Role::AttributeOverride::Meta::Trait::Role
+
 use 5.008;
 use utf8;
 
@@ -51,7 +54,7 @@ sub apply_modifier_to_attribute {
             delete $opts->{override_ignore_missing};
         }
         $class->add_attribute(
-            $attr_obj->clone_and_inherit_options( %{$opts} ) );
+            $role->clone_attr_and_inherit_options( $attr_obj, %{$opts} ) );
     }
     else {
         my $error = qq{Can't find attribute $attr required by } . $role->name;
@@ -64,6 +67,44 @@ sub apply_modifier_to_attribute {
     }
     ## use critic;
     return $attr_obj;
+}
+
+
+# Based on clone_and_inherit_options from Moose::Meta::Attribute.
+
+sub clone_attr_and_inherit_options {
+    my ($role, $attr, %options) = @_;
+
+    ## no critic (ProhibitAccessOfPrivateData);
+
+    my @illegal_options = $attr->can('illegal_options_for_inheritance')
+        ? $attr->illegal_options_for_inheritance
+        : ();
+
+    my @found_illegal_options = grep { exists $options{$_} && exists $attr->{$_} ? $_ : undef } @illegal_options;
+    (scalar @found_illegal_options == 0)
+        || $attr->throw_error("Illegal inherited options => (" . (join ', ' => @found_illegal_options) . ")", data => \%options);
+
+    if ($attr->can('interpolate_class')) {
+        ( $options{metaclass}, my @traits ) = $attr->interpolate_class(\%options);
+
+        my %seen;
+        my @all_traits = grep { $seen{$_}++ } @{ $attr->applied_traits || [] }, @traits;
+        if (@all_traits) {
+            $options{traits} = \@all_traits;
+        }
+    }
+
+    if ($options{coerce} && (! exists $options{isa})) {
+        $options{isa} = $attr->type_constraint;
+    }
+
+    if ($attr->can('_process_options')) {
+        $options{metaclass}->_process_options( $attr->name, \%options )
+    }
+    
+    ## use critic; 
+    return $attr->clone(%options);
 }
 
 sub add_modifiers_from_role {
@@ -92,7 +133,7 @@ MooseX::Role::AttributeOverride::Meta::Trait::Role - Support Role for L<MooseX::
 
 =head1 VERSION
 
-  This document describes v0.0.5 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 06, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.6 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 09, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 
@@ -115,6 +156,10 @@ Apply this role to L<Moose::Meta::Role|Moose::Meta::Role>.
 =head2 attribute_modifiers
 
 =head2 add_attribute_modifier
+
+=head2 clone_attr_and_inherit_options
+This is a hacked version of Moose::Meta::Attributes to fix issues with traits
+that hack _process_options.
 
 =head1 DIAGNOSTICS
 

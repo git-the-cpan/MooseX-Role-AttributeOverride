@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite;
 BEGIN {
-  $MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite::VERSION = '0.0.5';
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite::VERSION = '0.0.6';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite::AUTHORITY = 'cpan:EALLENIII';
@@ -69,7 +69,7 @@ MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite - Support Role for
 
 =head1 VERSION
 
-  This document describes v0.0.5 of MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite - released June 06, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.6 of MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite - released June 09, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 

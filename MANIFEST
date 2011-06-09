@@ -14,7 +14,6 @@ lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToClass.pm
 lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToRole.pm
 lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/Composite.pm
 t/00-compile.t
-t/00.load.t
 t/000-report-versions-tiny.t
 t/author-critic.t
 t/basic.t
@@ -40,4 +39,5 @@ t/release-pod-linkcheck.t
 t/release-pod-spell.t
 t/release-pod-syntax.t
 t/secondhand.t
+t/trait.t
 weaver.ini

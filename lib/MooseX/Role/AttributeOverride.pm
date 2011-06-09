@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride;
 BEGIN {
-  $MooseX::Role::AttributeOverride::VERSION = '0.0.5';
+  $MooseX::Role::AttributeOverride::VERSION = '0.0.6';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::AUTHORITY = 'cpan:EALLENIII';
@@ -76,7 +76,7 @@ MooseX::Role::AttributeOverride - Allow roles to modify attributes
 
 =head1 VERSION
 
-  This document describes v0.0.5 of MooseX::Role::AttributeOverride - released June 06, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.6 of MooseX::Role::AttributeOverride - released June 09, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 
@@ -225,6 +225,13 @@ This may change in the future.
 
 This works the same as '+has'. This means that you can't override accessor
 methods. This is a very sensible Moose limitation.
+
+=item *
+
+After having an issue with Moose, clone_and_inherit_options, and traits that
+use _process_options, I reimplemented clone_and_inherit_optiosn in a way that
+fixes it.  Sort of.  A side effect of this is that has_plus will not allow you
+to override the lazy option, without a default or builder option.
 
 =back
 
