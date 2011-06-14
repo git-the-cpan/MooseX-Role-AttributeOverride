@@ -1,32 +1,45 @@
-package MyApp::Role;
-use Moose::Role;
-use MooseX::Role::AttributeOverride;
+use strict;
+use warnings;
 
-has_plus 'fun' => ( default => 'yep', );
+{
 
-no Moose::Role;
+    package MyApp::Role;
+    use Moose::Role;
+    use MooseX::Role::AttributeOverride;
 
-package MyApp;
-use Moose;
+    has_plus 'fun' => ( default => 'yep', );
 
-has 'notfun' => (
-    is  => 'rw',
-    isa => 'Str'
-);
+    no Moose::Role;
 
-no Moose;
+}
+{
 
-package main;
-use Moose::Util;
+    package MyApp;
+    use Moose;
 
-use Test::More tests => 1;    # last test to print
+    has 'notfun' => (
+        is  => 'rw',
+        isa => 'Str'
+    );
 
-eval {
-    Moose::Util::apply_all_roles( 'MyApp', 'MyApp::Role' );
-    MyApp->meta->make_immutable;
-    my $test = MyApp->new();
-};
-my $error = $@;
+    no Moose;
 
-ok( $error =~ /Can't find attribute/, 'Missing Attribute dies' );
+}
+{
 
+    package main;
+    use Moose::Util;
+    use Try::Tiny;
+    use Test::More tests => 1;    # last test to print
+
+    my $error = undef;
+    try {
+        Moose::Util::apply_all_roles( 'MyApp', 'MyApp::Role' );
+        my $test = MyApp->new();
+    }
+    catch {
+        $error = $_;
+    };
+    ok( $error =~ /Can't find attribute/, 'Missing Attribute dies' );
+
+}

@@ -7,12 +7,13 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   'build_requires' => {
-    'English' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
     'Module::Build' => '0.3601',
+    'Moose' => '1.9900',
     'Moose::Util' => '0',
-    'Test::More' => '0.88'
+    'Test::More' => '0.88',
+    'Try::Tiny' => '0'
   },
   'configure_requires' => {
     'Module::Build' => '0.3601'
@@ -22,7 +23,7 @@ my %module_build_args = (
     'Edward Allen <ealleniii_at_cpan_dot_org>'
   ],
   'dist_name' => 'MooseX-Role-AttributeOverride',
-  'dist_version' => '0.0.6',
+  'dist_version' => '0.0.7',
   'license' => 'perl',
   'module_name' => 'MooseX::Role::AttributeOverride',
   'recommends' => {},

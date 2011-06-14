@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride;
 BEGIN {
-  $MooseX::Role::AttributeOverride::VERSION = '0.0.6';
+  $MooseX::Role::AttributeOverride::VERSION = '0.0.7';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::AUTHORITY = 'cpan:EALLENIII';
@@ -76,35 +76,63 @@ MooseX::Role::AttributeOverride - Allow roles to modify attributes
 
 =head1 VERSION
 
-  This document describes v0.0.6 of MooseX::Role::AttributeOverride - released June 09, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.7 of MooseX::Role::AttributeOverride - released June 13, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 
-    package MyApp::Role;
-    use Moose::Role;
-    use MooseX::Role::AttributeOverride;
+    {
+        package MyApp::Role;
+        use Moose::Role;
+        use MooseX::Role::AttributeOverride;
 
-    has_plus 'fun' => (
-        default => 'yep',
-    );
+        has_plus 'fun' => ( default => 'yep', );
 
+        has_plus 'alive' => (
+            default => 'yep',
+            override_ignore_missing => 1,
+        );
+    }
+    {
+        package MyApp::Trait;
+        use Moose::Role;
+        use MooseX::Role::AttributeOverride;
 
-    package MyApp;
-    use Moose 1.9900;
+        has_plus default => (
+            default => sub {
+                my $attr = shift;
+                return sub { $attr->name }
+            }
+        );
+    }
+    {
+        package MyApp;
+        use Moose 1.9900;
 
-    has 'fun' => (
-        is => 'rw',
-        isa => 'Str'
-    );
+        has nolife => (
+            is     => 'rw',
+            isa    => 'Str',
+            traits => ['MyApp::Trait'],
+        );
 
-    with qw(MyApp::Role);
+        has 'fun' => (
+            is  => 'rw',
+            isa => 'Str'
+        );
 
-    package main;
-    use feature 'say';
+        with qw(MyApp::Role);
+    }
+    {
+        package main;
+        use feature 'say';
 
-    say "Are you having fun? " . $test->fun;
+        my $test = MyApp->new();
 
-    # prints 'Are you having fun? yep'
+        say "I have " . $test->nolife;
+        # Says I have nolife
+        say "Are you having fun? " . $test->fun;
+        # Says Are you having fun? yep
+
+    }
 
 =head1 DESCRIPTION
 
@@ -141,7 +169,7 @@ For example:
     use Moose::Role;
     use MooseX::Role::AttributeOverride;
 
-    has_plus 'fun' => (
+    has_plus 'alive' => (
         default => 'yep',
         override_ignore_missing => 1,
     );
@@ -158,6 +186,48 @@ The above would not die, even though the MyApp package has no attribute named
 =back
 
 =back
+
+=head1 IMPORTANT NOTE
+
+Always apply a role that uses this module B<after> defining attributes.
+
+=head1 META USAGE
+
+This role can be used in traits.  For example, the following works:
+
+    {
+        package MyApp::Trait;
+        use Moose::Role;
+        use MooseX::Role::AttributeOverride;
+
+        has_plus default => (
+            default => sub {
+                my $attr = shift;
+                return sub { $attr->name }
+            }
+        );
+    }
+    {
+        package MyApp;
+        use Moose 1.9900;
+
+        has nolife => (
+            is     => 'rw',
+            isa    => 'Str',
+            traits => ['MyApp::Trait'],
+        );
+
+        with qw(MyApp::Role);
+    }
+    {
+        package main;
+        use feature 'say';
+
+        my $test = MyApp->new();
+
+        say "I have " . $test->nolife;
+        # Says I have nolife
+    }
 
 =head1 DIAGNOSTICS
 
@@ -232,6 +302,10 @@ After having an issue with Moose, clone_and_inherit_options, and traits that
 use _process_options, I reimplemented clone_and_inherit_optiosn in a way that
 fixes it.  Sort of.  A side effect of this is that has_plus will not allow you
 to override the lazy option, without a default or builder option.
+
+=item *
+
+If you try adding this role before adding the attributes, it won't work.
 
 =back
 

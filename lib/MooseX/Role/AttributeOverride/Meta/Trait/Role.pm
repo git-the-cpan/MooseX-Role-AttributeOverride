@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role;
 BEGIN {
-  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.6';
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.7';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::Meta::Trait::Role::AUTHORITY = 'cpan:EALLENIII';
@@ -133,7 +133,7 @@ MooseX::Role::AttributeOverride::Meta::Trait::Role - Support Role for L<MooseX::
 
 =head1 VERSION
 
-  This document describes v0.0.6 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 09, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.7 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 13, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 

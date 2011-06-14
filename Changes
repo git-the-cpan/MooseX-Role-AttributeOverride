@@ -2,6 +2,29 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 009e83b11309e36e0b53b741319e32c678455508
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Mon Jun 13 20:32:54 2011 -0700
+  
+    Revised POD. Added notes about placement and meta usage. Also revised
+    tests and added meta test.
+
+  commit 4e4ba9c085fdb7f49beacbdc76b2b30a1fd6c1a5
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Fri Jun 10 14:04:35 2011 -0700
+  
+    Revised tests to include more situations 
+
+================================
+2011-06-09 18:10:47 -0700 v0.0.6
+================================
+
+  commit 3b153022edd3e0b0706119fae37dfec0e5c92f83
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Thu Jun 9 12:36:18 2011 -0700
+  
+    playing with dist.ini
+
   commit 9b847a5dd655e99ae61891070efa5393381edfd8
   Author: Edward Allen <ealleniii@cpan.org>
   Date:   Thu Jun 9 11:13:33 2011 -0700

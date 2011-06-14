@@ -21,12 +21,20 @@ use warnings;
 }
 {
 
-    package MyApp::Role;
+    package MyApp::RoleA;
     use Moose::Role;
     use MooseX::Role::AttributeOverride;
 
     has_plus 'fun' => ( traits => ['MyApp::Meta::Attribute'] );
 
+    no Moose::Role;
+
+}
+{
+
+    package MyApp::RoleB;
+    use Moose::Role;
+    with qw(MyApp::RoleA);
     no Moose::Role;
 
 }
@@ -40,7 +48,7 @@ use warnings;
         isa => 'Str'
     );
 
-    with qw(MyApp::Role);
+    with qw(MyApp::RoleB);
 
     __PACKAGE__->meta->make_immutable;
     no Moose;

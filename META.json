@@ -45,34 +45,35 @@
       },
       "test" : {
          "requires" : {
-            "English" : 0,
             "File::Find" : 0,
             "File::Temp" : 0,
+            "Moose" : "1.9900",
             "Moose::Util" : 0,
-            "Test::More" : "0.88"
+            "Test::More" : "0.88",
+            "Try::Tiny" : 0
          }
       }
    },
    "provides" : {
       "MooseX::Role::AttributeOverride" : {
          "file" : "lib/MooseX/Role/AttributeOverride.pm",
-         "version" : "v0.0.6"
+         "version" : "v0.0.7"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role.pm",
-         "version" : "v0.0.6"
+         "version" : "v0.0.7"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToClass.pm",
-         "version" : "v0.0.6"
+         "version" : "v0.0.7"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToRole" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToRole.pm",
-         "version" : "v0.0.6"
+         "version" : "v0.0.7"
       },
       "MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite" : {
          "file" : "lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/Composite.pm",
-         "version" : "v0.0.6"
+         "version" : "v0.0.7"
       }
    },
    "release_status" : "stable",
@@ -91,10 +92,9 @@
          "web" : "http://github.com/riemann42/MooseX-Role-AttributeOverride"
       }
    },
-   "version" : "0.0.6",
+   "version" : "0.0.7",
    "x_BuiltWith" : {
       "modules" : {
-         "English" : "1.04",
          "File::Temp" : "0.22",
          "Module::Build" : "0.38",
          "Moose" : "2.0101",
@@ -103,6 +103,7 @@
          "Moose::Util" : "2.0101",
          "Moose::Util::MetaRole" : "2.0101",
          "Test::More" : "0.98",
+         "Try::Tiny" : "0.09",
          "perl" : "NA(skipped: perl)",
          "utf8" : "1.08"
       },
@@ -185,9 +186,19 @@
             "version" : "4.200007"
          },
          {
-            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
-            "name" : "AutoPrereqs",
-            "version" : "4.200007"
+            "class" : "Dist::Zilla::Plugin::GitHub::Meta",
+            "name" : "@GitHub/GitHub::Meta",
+            "version" : "0.10"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::GitHub::Update",
+            "name" : "@GitHub/GitHub::Update",
+            "version" : "0.10"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Git::NextVersion",
+            "name" : "Git::NextVersion",
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prepender",
@@ -210,16 +221,6 @@
             "version" : "3.101641"
          },
          {
-            "class" : "Dist::Zilla::Plugin::Git::NextVersion",
-            "name" : "Git::NextVersion",
-            "version" : "1.111590"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::NextRelease",
-            "name" : "NextRelease",
-            "version" : "4.200007"
-         },
-         {
             "class" : "Dist::Zilla::Plugin::CompileTests",
             "name" : "CompileTests",
             "version" : "1.110930"
@@ -228,11 +229,6 @@
             "class" : "Dist::Zilla::Plugin::ExtraTests",
             "name" : "ExtraTests",
             "version" : "4.200007"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::CriticTests",
-            "name" : "CriticTests",
-            "version" : "1.111450"
          },
          {
             "class" : "Dist::Zilla::Plugin::PodCoverageTests",
@@ -268,6 +264,11 @@
             "class" : "Dist::Zilla::Plugin::MinimumPerl",
             "name" : "MinimumPerl",
             "version" : "1.003"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
+            "name" : "AutoPrereqs",
+            "version" : "4.200007"
          },
          {
             "class" : "Dist::Zilla::Plugin::Bugtracker",
@@ -341,6 +342,11 @@
             "version" : "1.101461"
          },
          {
+            "class" : "Dist::Zilla::Plugin::ChangelogFromGit",
+            "name" : "ChangelogFromGit",
+            "version" : "0.002"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::Git::Check",
             "name" : "Git::Check",
             "version" : "1.111590"
@@ -349,11 +355,6 @@
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "Git::Tag",
             "version" : "1.111590"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::ChangelogFromGit",
-            "name" : "ChangelogFromGit",
-            "version" : "0.002"
          },
          {
             "class" : "Dist::Zilla::Plugin::TestRelease",
@@ -371,14 +372,29 @@
             "version" : "4.200007"
          },
          {
-            "class" : "Dist::Zilla::Plugin::ArchiveRelease",
-            "name" : "ArchiveRelease",
-            "version" : "3.01"
+            "class" : "Dist::Zilla::Plugin::Git::Commit",
+            "name" : "Git::Commit",
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "Git::Push",
             "version" : "1.111590"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::InstallRelease",
+            "name" : "InstallRelease",
+            "version" : "0.007"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::ArchiveRelease",
+            "name" : "ArchiveRelease",
+            "version" : "3.01"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Clean",
+            "name" : "Clean",
+            "version" : "0.02"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",

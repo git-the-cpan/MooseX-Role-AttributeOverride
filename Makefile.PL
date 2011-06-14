@@ -12,12 +12,13 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'Allow roles to modify attributes',
   'AUTHOR' => 'Edward Allen <ealleniii_at_cpan_dot_org>',
   'BUILD_REQUIRES' => {
-    'English' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
     'ExtUtils::MakeMaker' => '6.30',
+    'Moose' => '1.9900',
     'Moose::Util' => '0',
-    'Test::More' => '0.88'
+    'Test::More' => '0.88',
+    'Try::Tiny' => '0'
   },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.30'
@@ -33,7 +34,7 @@ my %WriteMakefileArgs = (
     'Moose::Util::MetaRole' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '0.0.6',
+  'VERSION' => '0.0.7',
   'test' => {
     'TESTS' => 't/*.t'
   }
