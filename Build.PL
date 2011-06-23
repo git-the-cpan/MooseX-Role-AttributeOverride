@@ -10,7 +10,6 @@ my %module_build_args = (
     'File::Find' => '0',
     'File::Temp' => '0',
     'Module::Build' => '0.3601',
-    'Moose' => '1.9900',
     'Moose::Util' => '0',
     'Test::More' => '0.88',
     'Try::Tiny' => '0'
@@ -23,18 +22,14 @@ my %module_build_args = (
     'Edward Allen <ealleniii_at_cpan_dot_org>'
   ],
   'dist_name' => 'MooseX-Role-AttributeOverride',
-  'dist_version' => '0.0.7',
+  'dist_version' => '0.0.8',
   'license' => 'perl',
   'module_name' => 'MooseX::Role::AttributeOverride',
   'recommends' => {},
   'recursive_test_files' => 1,
   'requires' => {
-    'Moose' => '0',
-    'Moose::Exporter' => '0',
-    'Moose::Role' => '1.9900',
-    'Moose::Util::MetaRole' => '0',
-    'perl' => '5.008',
-    'utf8' => '0'
+    'Moose' => '1.9900',
+    'perl' => '5.008'
   },
   'script_files' => []
 );

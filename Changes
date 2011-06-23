@@ -2,6 +2,23 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 847ef6287080048043909c469e9a18b0d45b13a8
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Wed Jun 22 19:23:30 2011 -0700
+  
+    Changed prereqs and changed composition_class_roles to be done with
+    around method modifier
+
+  commit 2abcba6dbdf0efb737da91b9008e03d858f38357
+  Author: Edward Allen <ealleniii@cpan.org>
+  Date:   Thu Jun 16 16:23:13 2011 -0700
+  
+    Changed meta.t so it no longer assumes time is always increasing 
+
+================================
+2011-06-13 20:32:54 -0700 v0.0.7
+================================
+
   commit 009e83b11309e36e0b53b741319e32c678455508
   Author: Edward Allen <ealleniii@cpan.org>
   Date:   Mon Jun 13 20:32:54 2011 -0700

@@ -2,7 +2,7 @@ NAME
     MooseX::Role::AttributeOverride - Allow roles to modify attributes
 
 VERSION
-      This document describes v0.0.7 of MooseX::Role::AttributeOverride - released June 13, 2011 as part of MooseX-Role-AttributeOverride.
+      This document describes v0.0.8 of MooseX::Role::AttributeOverride - released June 22, 2011 as part of MooseX-Role-AttributeOverride.
 
 SYNOPSIS
         {

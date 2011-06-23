@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role;
 BEGIN {
-  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.7';
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.8';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::Meta::Trait::Role::AUTHORITY = 'cpan:EALLENIII';
@@ -113,9 +113,10 @@ sub add_modifiers_from_role {
     return $role_a;
 }
 
-sub composition_class_roles {
-    return ('MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite');
-}
+around 'composition_class_roles' => sub {
+    my ($orig,$self) = @_;
+    return ($self->$orig, 'MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite');
+};
 
 no Moose::Role;
 1; # Magic true value required at end of module
@@ -133,7 +134,7 @@ MooseX::Role::AttributeOverride::Meta::Trait::Role - Support Role for L<MooseX::
 
 =head1 VERSION
 
-  This document describes v0.0.7 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 13, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.8 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 22, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 

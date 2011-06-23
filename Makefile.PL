@@ -15,7 +15,6 @@ my %WriteMakefileArgs = (
     'File::Find' => '0',
     'File::Temp' => '0',
     'ExtUtils::MakeMaker' => '6.30',
-    'Moose' => '1.9900',
     'Moose::Util' => '0',
     'Test::More' => '0.88',
     'Try::Tiny' => '0'
@@ -28,13 +27,9 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'MooseX::Role::AttributeOverride',
   'PREREQ_PM' => {
-    'Moose' => '0',
-    'Moose::Exporter' => '0',
-    'Moose::Role' => '1.9900',
-    'Moose::Util::MetaRole' => '0',
-    'utf8' => '0'
+    'Moose' => '1.9900'
   },
-  'VERSION' => '0.0.7',
+  'VERSION' => '0.0.8',
   'test' => {
     'TESTS' => 't/*.t'
   }

@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite;
 BEGIN {
-  $MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite::VERSION = '0.0.7';
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite::VERSION = '0.0.8';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite::AUTHORITY = 'cpan:EALLENIII';
@@ -20,7 +20,6 @@ use utf8;
 use Moose::Role;
 use Moose::Util::MetaRole;
 
-# I am not at all sure why I need to do this.  I think I am missing somthing.
 with 'MooseX::Role::AttributeOverride::Meta::Trait::Role';
 
 around apply_params => sub {
@@ -69,7 +68,7 @@ MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite - Support Role for
 
 =head1 VERSION
 
-  This document describes v0.0.7 of MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite - released June 13, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.8 of MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite - released June 22, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 

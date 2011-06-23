@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride;
 BEGIN {
-  $MooseX::Role::AttributeOverride::VERSION = '0.0.7';
+  $MooseX::Role::AttributeOverride::VERSION = '0.0.8';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::AUTHORITY = 'cpan:EALLENIII';
@@ -17,6 +17,7 @@ BEGIN {
 # ABSTRACT: Allow roles to modify attributes
 use 5.008;
 use utf8;
+use Moose 1.9900 ();
 use Moose::Role 1.9900;
 use Moose::Exporter;
 
@@ -76,7 +77,7 @@ MooseX::Role::AttributeOverride - Allow roles to modify attributes
 
 =head1 VERSION
 
-  This document describes v0.0.7 of MooseX::Role::AttributeOverride - released June 13, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.8 of MooseX::Role::AttributeOverride - released June 22, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 
