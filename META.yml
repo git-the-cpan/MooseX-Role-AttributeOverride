@@ -28,19 +28,19 @@ no_index:
 provides:
   MooseX::Role::AttributeOverride:
     file: lib/MooseX/Role/AttributeOverride.pm
-    version: v0.0.8
+    version: v0.0.9
   MooseX::Role::AttributeOverride::Meta::Trait::Role:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role.pm
-    version: v0.0.8
+    version: v0.0.9
   MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToClass.pm
-    version: v0.0.8
+    version: v0.0.9
   MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToRole:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/ApplicationToRole.pm
-    version: v0.0.8
+    version: v0.0.9
   MooseX::Role::AttributeOverride::Meta::Trait::Role::Composite:
     file: lib/MooseX/Role/AttributeOverride/Meta/Trait/Role/Composite.pm
-    version: v0.0.8
+    version: v0.0.9
 requires:
   Moose: 1.9900
   perl: 5.008
@@ -49,7 +49,7 @@ resources:
   homepage: http://search.cpan.org/dist/MooseX-Role-AttributeOverride/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/riemann42/MooseX-Role-AttributeOverride.git
-version: 0.0.8
+version: 0.0.9
 x_BuiltWith:
   modules:
     File::Temp: 0.22

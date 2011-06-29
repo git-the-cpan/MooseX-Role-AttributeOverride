@@ -9,7 +9,7 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass;
 BEGIN {
-  $MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass::VERSION = '0.0.8';
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass::VERSION = '0.0.9';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass::AUTHORITY = 'cpan:EALLENIII';
@@ -22,11 +22,12 @@ use Moose::Role;
 around apply => sub {
     my ($orig,$self, $role, $class ) = @_;
 
+    $self->$orig( $role, $class );
+
     if ( $role->can('attribute_modifiers') ) {
         $role->apply_modifiers_to_class($class);
     }
 
-    $self->$orig( $role, $class );
 };
 
 no Moose::Role;
@@ -45,7 +46,7 @@ MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass - Support
 
 =head1 VERSION
 
-  This document describes v0.0.8 of MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass - released June 22, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.9 of MooseX::Role::AttributeOverride::Meta::Trait::Role::ApplicationToClass - released June 29, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 

@@ -21,6 +21,7 @@ t/basicbuild.t
 t/basicbuild2.t
 t/composite.t
 t/composite2.t
+t/composite3.t
 t/error1.t
 t/error2.t
 t/error3.t
@@ -29,6 +30,7 @@ t/ibasicbuild.t
 t/ibasicbuild2.t
 t/icomposite.t
 t/icomposite2.t
+t/icomposite3.t
 t/ierror1.t
 t/ierror2.t
 t/ierror3.t

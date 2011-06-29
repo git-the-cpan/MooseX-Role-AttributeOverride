@@ -9,14 +9,12 @@
 use strict; use warnings;
 package MooseX::Role::AttributeOverride::Meta::Trait::Role;
 BEGIN {
-  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.8';
+  $MooseX::Role::AttributeOverride::Meta::Trait::Role::VERSION = '0.0.9';
 }
 BEGIN {
   $MooseX::Role::AttributeOverride::Meta::Trait::Role::AUTHORITY = 'cpan:EALLENIII';
 }
 # ABSTRACT: Support Role for L<MooseX::Role::AttributeOverride|MooseX::Role::AttributeOverride>
-
-# PODNAME: MooseX::Role::AttributeOverride::Meta::Trait::Role
 
 use 5.008;
 use utf8;
@@ -134,7 +132,7 @@ MooseX::Role::AttributeOverride::Meta::Trait::Role - Support Role for L<MooseX::
 
 =head1 VERSION
 
-  This document describes v0.0.8 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 22, 2011 as part of MooseX-Role-AttributeOverride.
+  This document describes v0.0.9 of MooseX::Role::AttributeOverride::Meta::Trait::Role - released June 29, 2011 as part of MooseX-Role-AttributeOverride.
 
 =head1 SYNOPSIS
 

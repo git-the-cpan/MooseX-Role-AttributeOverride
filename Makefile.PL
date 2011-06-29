@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Moose' => '1.9900'
   },
-  'VERSION' => '0.0.8',
+  'VERSION' => '0.0.9',
   'test' => {
     'TESTS' => 't/*.t'
   }
